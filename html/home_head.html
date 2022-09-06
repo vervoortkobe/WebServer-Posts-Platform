@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chap🍟Reviews</title>
+
+    <link id="favicon" rel="icon" href="icons/favicon.png">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#3098C0">
+    <meta property="og:title" content="Chap🍟Reviews">
+    <meta property="og:url" content="./">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="A website for reviews on restaurants and fastfood tents...">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,700" rel="stylesheet">
+    <link href="./bootstrap-5.1.3-dist/css/themes/litera.bootstrap.min.css" rel="stylesheet">
+    <script src="./bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <style>
+      h1 { text-align: center; font-family: roboto, sans-serif; font-size: 38px; padding: 20px 0 20px 0;}
+      .title { text-align: center; font-weight: bold; font-family: roboto, sans-serif; font-size: 24px; }
+      .post { text-align: center; font-weight: normal; font-family: roboto, sans-serif; font-size: 18px; }
+      img { border-radius: 10px; max-width: 50%; height: auto; }
+    </style>
+    
+    <script>
+      //SHARE
+      function share(id) {
+        navigator.clipboard.writeText("https://" + window.location.host + "/#" + id.split("_")[1]).then(function() {
+          console.log("Successfully copied share link!");
+          document.getElementById(id).innerHTML = "✅";
+          setTimeout(() => {
+            document.getElementById(id).innerHTML = "Share";
+          }, 3000);
+        }, function(err) {
+          console.log("Error while copying share link!", err);
+        });
+      }
+      //AOS
+      document.onreadystatechange = function () {
+        if(document.readyState === "complete") AOS.init();
+      }
+    </script>
