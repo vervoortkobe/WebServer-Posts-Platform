@@ -97,7 +97,7 @@ module.exports.run = async (req, res, fs) => {
             req.session.post = post;
             req.session.username = user;
         
-            console.log(`${req.session.username} edited a post (${id})!`);
+            console.log("\x1b[35m", `» (USER) ${user} edited a post (${id})!`, "\x1b[0m", "");
         
             return res.redirect(`/#${id}`);
   

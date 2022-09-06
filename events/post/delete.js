@@ -58,7 +58,7 @@ module.exports.run = async (req, res, fs) => {
             if(err) console.log(err);
           });
       
-          console.log("\x1b[33m", `» (USER) ${user} deleted a post (${id})!`, "\x1b[0m", "");
+          console.log("\x1b[35m", `» (USER) ${user} deleted a post (${id})!`, "\x1b[0m", "");
       
           return res.redirect("/");
   

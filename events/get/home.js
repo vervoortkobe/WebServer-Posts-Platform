@@ -62,7 +62,7 @@ module.exports.run = async (req, res, fs) => {
     } else {
       //USER
 
-      console.log("\x1b[33m", `» (USER) ${user} visited /!`, "\x1b[0m", "");
+      console.log("\x1b[35m", `» (USER) ${user} visited /!`, "\x1b[0m", "");
       
       posts.forEach(p => {
         let ximages = "";
@@ -125,7 +125,7 @@ module.exports.run = async (req, res, fs) => {
   } else {
     //LOGGED OUT
 
-    console.log("\x1b[31m", `» (UNKNOWN) Anonymous visited /!`, "\x1b[0m", "");
+    console.log("\x1b[33m", `» (UNKNOWN) Anonymous visited /!`, "\x1b[0m", "");
     
     posts.forEach(p => {
       let ximages = "";
