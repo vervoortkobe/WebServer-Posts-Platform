@@ -32,7 +32,7 @@ module.exports.run = async (req, res, fs) => {
           req.session.password = password;
           var user = req.session.username;
   
-          console.log("\x1b[35m", `» (USER) ${user} registered (DEFAULT)!`, "\x1b[0m", "");
+          console.log("\x1b[35m", `» (USER) ${username} registered (DEFAULT)!`, "\x1b[0m", "");
           
           return res.redirect("/");
         }
@@ -54,7 +54,7 @@ module.exports.run = async (req, res, fs) => {
           req.session.password = password;
           var user = req.session.username;
 
-          console.log("\x1b[35m", `» (USER) ${user} registered (DEFAULT)!`, "\x1b[0m", "");
+          console.log("\x1b[35m", `» (USER) ${username} registered (DEFAULT)!`, "\x1b[0m", "");
           
           return res.redirect("/");
         }

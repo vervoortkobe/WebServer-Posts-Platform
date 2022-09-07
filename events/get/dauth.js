@@ -42,9 +42,9 @@ module.exports.run = async (req, res, fs) => {
   			});
 
         if(tokenResData.statusCode === 401) {
-          return res.send(`<script>setTimeout(() => { window.location.href = "/login" }, 3000);</script>
+          return res.send(`<script>setTimeout(() => { window.location.href = "/dlogin" }, 3000);</script>
                     <center>Please enter a valid username & password!<br>
-                    Redirecting to /login in 3 seconds...</center>`);
+                    Redirecting to /dlogin in 3 seconds...</center>`);
         }
   
   			const oauthData = await getJSONRes(tokenResData.body);
@@ -61,6 +61,7 @@ module.exports.run = async (req, res, fs) => {
 
   				req.session.loggedin = true;
           req.session.username = `${body.username}#${body.discriminator}`;
+          req.session.avatar = `https://cdn.discordapp.com/avatars/${body.id}/${body.avatar}.png?size=128`;
           
   				return res.redirect("/");
   			});

@@ -76,8 +76,8 @@ module.exports.run = async (req, res, fs) => {
     }
         
   } else {
-    return res.send(`<script>setTimeout(() => { window.location.href = "/login" }, 3000);</script>
+    return res.send(`<script>setTimeout(() => { window.location.href = "/dlogin" }, 3000);</script>
               <center>Please login before deleting!<br>
-              Redirecting to /login in 3 seconds...</center>`);
+              Redirecting to /dlogin in 3 seconds...</center>`);
   }
 }
