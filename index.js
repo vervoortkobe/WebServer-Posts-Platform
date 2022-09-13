@@ -8,6 +8,7 @@ const path = require("path");
 const moment = require("moment");
 const multer  = require("multer")
 const upload = multer({ dest: "uploads/" });
+const webpush = require("web-push");
 require("dotenv").config();
 process.env.PORT = 80;
 
@@ -77,6 +78,29 @@ app.get("/ping", (req, res) => {
   if(eventfile) eventfile.run(req, res, fs);
 });
 
+const publicVapidKey = process.env.WEBPUSH_PUBLICVAPIDKEY;
+const privateVapidKey = process.env.WEBPUSH_PRIVATEVAPIDKEY;
+
+webpush.setVapidDetails("mailto:vervoortkobe@outlook.com", publicVapidKey, privateVapidKey);
+
+app.post("/subscribe", (req, res)=>{
+    const subscription = req.body;
+
+    res.status(201).json({})
+
+    const payload = JSON.stringify({ title: "test push notification" });
+
+    webpush.sendNotification(subscription, payload).catch(err=> console.log(err));
+});
+
+app.get("/client.js", (req, res) => {
+  res.sendFile(`${__dirname}/html/client.js`);
+});
+
+app.get("/worker.js", (req, res) => {
+  res.sendFile(`${__dirname}/html/worker.js`);
+});
+
 //BOOTSTRAP DIR HOST
 let bootstraps = fs.readdirSync("./bootstrap-5.1.3-dist/css/themes/", { withFileTypes: true });
 bootstraps.forEach(b => {
@@ -103,6 +127,7 @@ icons.forEach(i => {
   });
 });
 
+//DEFAULT LOGIN
 app.get("/login", function(req, res) {
   let eventfile = require("./events/get/login.js")
   if(eventfile) eventfile.run(req, res, fs);
@@ -113,6 +138,7 @@ app.post("/auth", (req, res) => {
   if(eventfile) eventfile.run(req, res, fs);
 });
 
+//DISCORD LOGIN
 app.get("/dlogin", function(req, res) {
   let eventfile = require("./events/get/dlogin.js")
   if(eventfile) eventfile.run(req, res, fs);
@@ -122,15 +148,6 @@ app.get("/dauth", function(req, res) {
   let eventfile = require("./events/get/dauth.js")
   if(eventfile) eventfile.run(req, res, fs);
 });
-
-/*app.get("/json/logins.json", (req, res) => {
-  if(!req.query.user) return res.json({"error": "no user query included"});
-  if(req.query.user === process.env.ADMIN) {
-    res.sendFile(`${__dirname}/json/logins.json`);
-  } else {
-    return res.json({"error": "incorrect user query included"});
-  }
-});*/
 
 app.get("/register", function(req, res) {
   let eventfile = require("./events/get/register.js")
