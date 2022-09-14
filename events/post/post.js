@@ -24,7 +24,7 @@ module.exports.run = async (req, res, fs) => {
 			req.session.images = images;
 
       if(user === process.env.ADMIN) {
-        console.log("\x1b[31m", `» (ADMIN) ${user} comitted a new post!`, "\x1b[0m", "");
+        console.log("\x1b[31m", `» (ADMIN) ${user} committed a new post!`, "\x1b[0m", "");
       } else {
         console.log("\x1b[35m", `» (USER) ${user} committed a new post!`, "\x1b[0m", "");
       }

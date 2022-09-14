@@ -30,6 +30,12 @@
     </style>
     
     <script>
+      console.log(`Notification Permission is now ${window.Notification.permission}!`);
+      if (window.Notification.permission === "denied" || window.Notification.permissions === "default") {
+        window.Notification.requestPermission().then(p => {
+          console.log(`Notification Permission Request was ${p}!`);
+        });
+      }
       //SHARE
       function share(id) {
         navigator.clipboard.writeText("https://" + window.location.host + "/#" + id.split("_")[1]).then(function() {
@@ -47,6 +53,4 @@
         if(document.readyState === "complete") AOS.init();
       }
     </script>
-    
-    <script src="/client.js"></script>
     

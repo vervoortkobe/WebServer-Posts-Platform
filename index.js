@@ -78,27 +78,28 @@ app.get("/ping", (req, res) => {
   if(eventfile) eventfile.run(req, res, fs);
 });
 
+const vapidMailto = process.env.WEBPUSH_VAPIDMAILTO
 const publicVapidKey = process.env.WEBPUSH_PUBLICVAPIDKEY;
 const privateVapidKey = process.env.WEBPUSH_PRIVATEVAPIDKEY;
 
-webpush.setVapidDetails("mailto:vervoortkobe@outlook.com", publicVapidKey, privateVapidKey);
+webpush.setVapidDetails(`mailto:${vapidMailto}`, publicVapidKey, privateVapidKey);
 
 app.post("/subscribe", (req, res)=>{
     const subscription = req.body;
 
     res.status(201).json({})
 
-    const payload = JSON.stringify({ title: "test push notification" });
+    const payload = JSON.stringify({ title: "You committed a new post!" });
 
     webpush.sendNotification(subscription, payload).catch(err=> console.log(err));
 });
 
-app.get("/client.js", (req, res) => {
-  res.sendFile(`${__dirname}/html/client.js`);
+app.get("/wpclient.js", (req, res) => {
+  res.sendFile(`${__dirname}/html/wpclient.js`);
 });
 
-app.get("/worker.js", (req, res) => {
-  res.sendFile(`${__dirname}/html/worker.js`);
+app.get("/sworker.js", (req, res) => {
+  res.sendFile(`${__dirname}/html/sworker.js`);
 });
 
 //BOOTSTRAP DIR HOST

@@ -11,6 +11,9 @@
     <link href="./bootstrap-5.1.3-dist/css/themes/litera.bootstrap.min.css" rel="stylesheet">
     <script src="./bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 
+    <!-- WEBPUSH CLIENT.JS & SERVICEWORKER.JS -->
+    <script src="/wpclient.js"></script>
+    
     <style>
       h1 { text-align: center; font-family: roboto, sans-serif; font-size: 38px; }
       
@@ -37,7 +40,7 @@
 				<input type="text" name="title" placeholder="Title" id="title" class="form-control" autofocus required><br>
 				<input type="text" name="post" placeholder="Post" id="post" class="form-control" required><br>
 				<input type="file" name="images" placeholder="Image" id="images" class="form-control" accept="image/*" required><br><br>
-				<input type="submit" id="submit" class="btn btn-outline-primary" value="Upload">
+				<input type="submit" id="submit" class="btn btn-outline-primary" value="Upload" onclick="subscribe()">
 			</form>
 		</div>
 	</body>
