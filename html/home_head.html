@@ -27,9 +27,12 @@
       .title { text-align: center; font-weight: bold; font-family: roboto, sans-serif; font-size: 24px; }
       .post { text-align: center; font-weight: normal; font-family: roboto, sans-serif; font-size: 18px; }
       img { border-radius: 10px; max-width: 50%; height: auto; }
+      .pagecontent { display: none; }
+      .preload { display: block; margin: auto; margin-top: 19%; }
     </style>
     
     <script>
+      //NOTIFICATION PERMISSION
       console.log(`Notification Permission is now ${window.Notification.permission}!`);
       if (window.Notification.permission === "denied" || window.Notification.permissions === "default") {
         window.Notification.requestPermission().then(p => {
@@ -53,4 +56,60 @@
         if(document.readyState === "complete") AOS.init();
       }
     </script>
-    
+  </head>
+  <body>
+    <center>
+      <div id="preload" class="preload">
+        <div id="preloadborder" class="preloadborder">
+          <div id="loading" class="loading">
+            <div id="loadingvalue" class="loadingvalue"></div>
+          </div>
+        </div>
+      </div>
+    </center>
+  </body>
+
+  <style>
+    .preloadborder {
+      border: 4px solid #000;
+      border-radius: 5px;
+      height: 199px;
+      width: 474px;
+    }
+    .loading {
+      background: #000;
+      justify-content: flex-start;
+      border-radius: 25px;
+      align-items: center;
+      position: relative;
+      padding: 0 5px;
+      display: flex;
+      height: 24px;
+      width: 300px;
+      margin-top: 17.5%;
+    }
+    .loadingvalue {
+      animation: load 2s normal forwards;
+      border-radius: 100px;
+      background: #FFF;
+      height: 16px;
+      width: 0;
+    }
+    @keyframes load {
+      0% {
+        width: 0;
+        }
+      50% {
+        width: 0;
+        }
+      100% {
+        width: 100%;
+      }
+    }
+  </style>
+  <script>
+    setTimeout(() => {
+      document.getElementById("preload").style.display = "none";
+      document.getElementById("pagecontent").style.display = "block";
+    }, 3000);
+  </script>
