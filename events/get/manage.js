@@ -21,7 +21,7 @@ module.exports.run = async (req, res, fs) => {
                   <form action="edit" method="POST">
                     <input type="text" name="id" placeholder="ID" value="${p.images[0].filename}" id="id" class="form-control" readonly required><br>
                     <input type="text" name="title" placeholder="Title" value="${p.title}" id="title" class="form-control" autofocus onfocus="this.setSelectionRange(this.value.length, this.value.length);" required><br>
-                    <input type="text" name="post" placeholder="Post" value="${p.post}" id="post" class="form-control" required><br>
+                    <textarea type="text" name="post" placeholder="Post" id="post" class="form-control" rows="3" style="height: 120px;" required>${p.post}</textarea><br>
                 </div>
                 <center>
                   <a href="/${p.images[0].path}.png" target="_blank" id="imgurl" class="imgurl">
@@ -52,7 +52,8 @@ module.exports.run = async (req, res, fs) => {
                     <form action="edit" method="POST">
                       <input type="text" name="id" placeholder="ID" value="${p.images[0].filename}" id="id" class="form-control" readonly required><br>
                       <input type="text" name="title" placeholder="Title" value="${p.title}" id="title" class="form-control" autofocus onfocus="this.setSelectionRange(this.value.length, this.value.length);" required><br>
-                      <input type="text" name="post" placeholder="Post" value="${p.post}" id="post" class="form-control" required><br>
+                      
+                      <textarea type="text" name="post" placeholder="Post" id="post" class="form-control" rows="3" style="height: 120px;" required>${p.post}</textarea><br>
                   </div>
                   <center>
                     <a href="/${p.images[0].path}.png" target="_blank" id="imgurl" class="imgurl">
