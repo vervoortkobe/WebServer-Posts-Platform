@@ -24,7 +24,7 @@ async function send(){
     const register = await navigator.serviceWorker.register('/worker.js', {
         scope: '/'
     });
-  
+
     await navigator.serviceWorker.ready;
 
     //register push
@@ -34,7 +34,7 @@ async function send(){
         //public vapid key
         applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
     });
-  
+
     await fetch('/subscription', {
     method: 'POST',
     body: JSON.stringify(subscription),
