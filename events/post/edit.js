@@ -4,13 +4,16 @@ module.exports.run = async (req, res, fs) => {
   let posts = require("../../json/posts.json");
   
 	if(req.session.loggedin) {
+
+    console.log(req.body);
   
     var user = req.session.username;
     var id = req.body.id;
     var title = req.body.title;
     var post = req.body.post;
+    var visibility = req.body.visibility;
     
-    if(id && title && post) {
+    if(user && id && title && post && visibility) {
 
       //ADMIN
       if(user === process.env.ADMIN) {
@@ -27,6 +30,7 @@ module.exports.run = async (req, res, fs) => {
             user: postsSync.find(p => p.images[0].filename === id).user,
             date: postsSync.find(p => p.images[0].filename === id).date,
             post: post,
+            visibility: visibility,
             images: [
               {
                 fieldname: postsSync.find(p => p.images[0].filename === id).images[0].fieldname,
@@ -47,6 +51,7 @@ module.exports.run = async (req, res, fs) => {
   
           req.session.title = title;
           req.session.post = post;
+          req.session.visibility = visibility;
           req.session.username = user;
       
           console.log("\x1b[31m", `» (ADMIN) ${user} edited a post (${id})!`, "\x1b[0m", "");
@@ -75,6 +80,7 @@ module.exports.run = async (req, res, fs) => {
           		user: postsSync.find(p => p.images[0].filename === id).user,
           		date: postsSync.find(p => p.images[0].filename === id).date,
           		post: post,
+              visibility: visibility,
           		images: [
           			{
           				fieldname: postsSync.find(p => p.images[0].filename === id).images[0].fieldname,
@@ -95,6 +101,7 @@ module.exports.run = async (req, res, fs) => {
     
             req.session.title = title;
             req.session.post = post;
+            req.session.visibility = visibility;
             req.session.username = user;
         
             console.log("\x1b[35m", `» (USER) ${user} edited a post (${id})!`, "\x1b[0m", "");

@@ -30,7 +30,7 @@
   			padding: 10px;
   			font-weight: bold;
         font-size: 16px;
-  		}
+      }
 		</style>
 	</head>
 	<body>
@@ -39,6 +39,7 @@
 			<form action="post" method="POST" enctype="multipart/form-data">
 				<input type="text" name="title" placeholder="Title" id="title" class="form-control" autofocus required><br>
         <textarea type="text" name="post" placeholder="Post" id="post" class="form-control" rows="3" style="height: 120px;" required></textarea><br>
+        <input type="checkbox" name="visibility" id="visibility" class="form-check-input" checked> Visibility<br><br>
 				<input type="file" name="images" placeholder="Image" id="images" class="form-control" accept="image/*" required><br><br>
 				<input type="submit" id="submit" class="btn btn-outline-primary" value="Upload" onclick="subscribe()">
 			</form>
